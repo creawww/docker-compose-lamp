@@ -1,0 +1,66 @@
+version: '3'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+       - ./db_files:/var/lib/mysql
+     restart: always
+     environment:
+       MYSQL_ROOT_PASSWORD: toor
+       #MYSQL_DATABASE: testdb 
+       #MYSQL_USER: docky
+       #MYSQL_PASSWORD: docky
+     ports:
+      - 3306:3306
+
+   p56:
+     depends_on:
+       - db
+     image: php:5.6
+     build:
+      context: ./docker
+      dockerfile: Dockerfile56
+     links:
+      - db
+     volumes:
+      - ./www:/var/www/html
+      - ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini
+      - ./docker/virtualhost-php56.conf:/etc/apache2/sites-available/001-virtualhost-php56.conf
+      - ./logs/56_error.log:/var/www/56_error.log
+      - ./logs/56_access.log:/var/www/56_access.log
+     environment:
+       DB_HOST: db:3306
+       DB_PASSWORD: toor
+     ports:
+      - 8080:80
+
+#   p71:
+#     depends_on:
+#       - db
+#     image: php:7.1
+#     build:
+#      context: .
+#      dockerfile: Dockerfile71
+#     links:
+#      - db
+#     volumes:
+#      - ./www:/var/www/html
+#      - ./docker/php.ini:/usr/local/etc/php/conf.d/php.ini
+#      - ./docker/virtualhost-php71.conf:/etc/apache2/sites-available/001-virtualhost-php71.conf
+#      - ./logs/71_error.log:/var/www/71_error.log
+#      - ./logs/71_access.log:/var/www/71_access.log
+#     environment:
+#       DB_HOST: db:3306
+#       DB_PASSWORD: toor
+#     ports:
+#      - 81:80
+
+   pma:
+     depends_on:
+       - db
+     image: phpmyadmin/phpmyadmin
+     ports:
+       - "8081:80"
+     volumes:
+      - ./phpmyadmin/sessions:/sessions

@@ -1,0 +1,5 @@
+RewriteEngine on
+RewriteCond %{REQUEST_URI} !/enMantenimiento/index.html
+RewriteCond %{REQUEST_URI} !(\.gif|\.jpg|\.png)$ [NC]
+#RewriteCond %{REMOTE_ADDR} !^90.171.99.20
+RewriteRule $ /enMantenimiento/index.html  [R=302,L]
