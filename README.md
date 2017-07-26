@@ -10,37 +10,39 @@ Una vez clonado el repositorios tenemos la siguiente estructura de archivos y di
 ```
 docker-compose-lamp
 │   README.md
-│   Docker-compose.yml    # archivo con las instrucciones del docker-compose    
+│   Docker-compose.yml             # archivo con las instrucciones del docker-compose    
 │
 └───docker
 │   │   Dockerfile56
-│   │   Dockerfile56
-│   │   Dockerfile56
-│   │   file012.txt
-│   │
+│   │   Dockerfile71
+│   │   php.ini
+│   │   virtualhost-php56.conf
 │   └─
 │     
 └───logs
 │   │   56_access.log     
 │   │   56_access.log
 │   │
-│   └───subfolder1
-│   
-└───folder2
-    │   file021.txt
-    │   file022.txt
+│   └─
+│
+└───phpmyadmin
+│   │
+│   └───sessions                   # persistencia para las sesiones de phpmyadmin  
+│ 
+└───www                            # persistencia para la aplicacion web 
+    │   index.php
+    │   
 ```
 
 todos los archivos y carpetas de las carpeta *www* tiene que pertenecer a usuario *www-data*
+
     sudo chown -R www-data www/
 
 arrancar los contenedores
+
     docker-compose up
 
 arrancar y parar en segundo plano
-    docker-compose start
-    docker-compose stop
-
 
     docker-compose start
     docker-compose stop
@@ -56,37 +58,71 @@ arrancar y parar en segundo plano
 # Instrucciones basicas para el manejo de contenedores
 
 Listar procesos en contenedores corriendo
-    docker ps
+
+    docker ps <id/name>
 
 Listar procesos en contenedores creados
-    docker ps -
+    
+    docker ps -a
+
+
+## Parar contendor
+
+    docker stop <id/name>
+
+Parar todos los contendores
+ 
+    docker stop $(docker ps -a -q)
 
 ## Borrar contendor
 
-borrar todos los contendores 
-    docker stop $(docker ps -a -q)
+    docker rm <id/name>
 
-# Eliminar todos los contenedores
-docker rm $(docker ps -a -q)
+borrar todos los contenedores
 
-# Eliminar todas las imágenes
-docker rmi $(docker images -q)
+    docker rm $(docker ps -a -q)
 
-docker image prune -a
+## imagenes docker
 
-listar interfaces de red
+### Listar imagenes almacenadas
+
+	docker images
+
+## Borrar imagen
+
+    docker rmi <id/name>
+
+Borrar todas las imágenes
+
+    docker rmi $(docker images -q)
+
+    o
+
+	docker image prune -a
+
+## listar interfaces de red
+
     docker network ls
 
-docker network $(docker network ls -q)
+## borrar interfaces de red
 
+	docker network rm <id/name>
 
+Borrar toda las interfaces de red
 
-# Backup
+	docker network rm $(docker network ls -q)
+
+# base de datos
+
+## Backup
+
     docker exec CONTAINER /usr/bin/mysqldump -u root --password=root DATABASE > backup.sql
 
-# Restore
+## Restore
+
     cat backup.sql | docker exec -i CONTAINER /usr/bin/mysql -u root --password=root DATABASE
 
-# create data base
+## create data base
+
     docker exec -i CONTAINER /usr/bin/mysql -u root --password=root 'CREATE DATABASE mydatabase CHARACTER SET utf8 COLLATE utf8_general_ci;'
 
