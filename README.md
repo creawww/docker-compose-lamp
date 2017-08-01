@@ -6,7 +6,7 @@ Docker compose server LAMP: Linux, Apache, Mysql, PHP, and PhpMyadmin (.htaccess
 - PHP 5.6
 - MySql 5.7
 
-Entorno de desarrollo de aplicaciones en php y mysql, con persistencia de la base de datos, y acceso a los log de apache, esta habilitado el uso de .htaccess y dispone de un phpmyadmin para gestinar las base de datos en entorno grafico.
+Entorno de desarrollo de aplicaciones en php y mysql, con persistencia de la base de datos, y acceso a los log de apache, esta habilitado el uso de .htaccess y dispone de un phpmyadmin para gestinar las base de datos en entorno grafico. Valido para WordPress, Laravel ...
 
 # instrucciones
 
@@ -41,8 +41,6 @@ Todos los archivos y carpetas de las carpeta **www** tiene que pertenecer a usua
 
     sudo chown -R www-data www/
 
-La configuracion de la base de datos el host **DB_HOST='db:3306'**
-
 Arrancar los contenedores (la primera vez se construyen **build**)
 
     docker-compose up
@@ -52,6 +50,13 @@ Arrancar y parar en segundo plano
     docker-compose start
     docker-compose stop
 
+### La configuracion por defecto que puede cambiarse en dockercompose es:
+
+host de la base de datos **DB_HOST='db:3306'**
+
+Para acceder a la aplicacion **http://localhost:8080**
+
+Para acceder a la phpmyadmin **http://localhost:8081** Datos por defecto : user:root ; pass:toor
 
 
 ### Entrar en bash de un contenedor mysql
