@@ -26,7 +26,6 @@ docker-compose-lamp
 └───logs                           # Archivos de logs de apache version php 5.6 
 │   │   56_access.log     
 │   │   56_error.log
-│   │
 │   └─
 │
 └───phpmyadmin
@@ -44,7 +43,7 @@ Todos los archivos y carpetas de las carpeta **www** tiene que pertenecer a usua
 
 La configuracion de la base de datos el host **DB_HOST='db:3306'**
 
-Arrancar los contenedores (la primera vex se construyen build)
+Arrancar los contenedores (la primera vez se construyen **build**)
 
     docker-compose up
 
@@ -55,11 +54,11 @@ Arrancar y parar en segundo plano
 
 
 
-### entrar en bash de un contenedor mysql
+### Entrar en bash de un contenedor mysql
     
     docker exec -it dbmy /bin/bash
 
-### entrar en bash de un contenedor apache-php
+### Entrar en bash de un contenedor apache-php
     
     docker exec -it p56 /bin/bash
 
@@ -111,13 +110,13 @@ Borrar todas las imágenes
 	docker image prune -a
 
 
-## interfaces de red docker
+## Interfaces de red docker
 
-### listar interfaces de red
+### Listar interfaces de red
 
     docker network ls
 
-### borrar interfaces de red
+### Borrar interfaces de red
 
 	docker network rm <id/name>
 
