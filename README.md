@@ -56,10 +56,12 @@ Arrancar y parar en segundo plano
 
 
 ### entrar en bash de un contenedor mysql
+    
     docker exec -it dbmy /bin/bash
 
 ### entrar en bash de un contenedor apache-php
-   docker exec -it p56 /bin/bash
+    
+    docker exec -it p56 /bin/bash
 
 # Instrucciones basicas para el manejo de contenedores
 
@@ -96,7 +98,7 @@ Borrar todos los contenedores
 
 	docker images
 
-## Borrar imagen
+### Borrar imagen
 
     docker rmi <id/name>
 
