@@ -2,6 +2,10 @@
 
 Docker compose server LAMP: Linux, Apache, Mysql, PHP, and PhpMyadmin (.htaccess enable)
 
+- Apache
+- PHP 5.6
+- MySql 5.7
+
 Entorno de desarrollo de aplicaciones en php y mysql, con persistencia de la base de datos, y acceso a los log de apache, esta habilitado el uso de .htaccess y dispone de un phpmyadmin para gestinar las base de datos en entorno grafico.
 
 # instrucciones
@@ -19,9 +23,9 @@ docker-compose-lamp
 │   │   virtualhost-php56.conf     # Paramametros personalizados virtualhost de apache
 │   └─
 │     
-└───logs
+└───logs                           # Archivos de logs de apache version php 5.6 
 │   │   56_access.log     
-│   │   56_access.log
+│   │   56_error.log
 │   │
 │   └─
 │
