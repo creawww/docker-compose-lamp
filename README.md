@@ -1,6 +1,5 @@
-<!--- 
 let text=`
--->
+
 # docker-compose-lamp
 
 Docker compose server LAMP: Linux, Apache, Mysql, PHP, and PhpMyadmin (.htaccess enable)
