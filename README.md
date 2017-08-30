@@ -1,5 +1,6 @@
+<!--- add for load variable for READMEviewer
 let text=`
-
+-->
 # docker-compose-lamp
 
 Docker compose server LAMP: Linux, Apache, Mysql, PHP, and PhpMyadmin (.htaccess enable)
@@ -127,4 +128,4 @@ Borrar todas las imágenes
 Borrar toda las interfaces de red
 
 	docker network rm $(docker network ls -q)
-
+`
