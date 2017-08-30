@@ -12,13 +12,13 @@ services:
      ports:
       - 3306:3306
    p56:
-     depends_on:
-       - db
      image: php:5.6
      container_name: p56     
      build:
       context: ./docker
       dockerfile: Dockerfile56
+     depends_on:
+       - db
      links:
       - db
      volumes:

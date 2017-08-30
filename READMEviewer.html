@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Viewer README</title>
+<script src="https://cdn.rawgit.com/showdownjs/showdown/1.7.3/dist/showdown.min.js"></script>
+<script src="README.md"></script>
+<style>
+	code{
+		background: #eee;
+		margin:0 0 0 25px;
+		border:1px solid #999;
+		padding: 8px 28px;
+		display:inline-block;
+		border-radius: 5px
+	}
+</style>
+</head>
+<body>
+<div id="content">aa</div>
+
+<script type="text/javascript">
+var converter = new showdown.Converter(),
+    html      = converter.makeHtml(text);
+    document.getElementById("content").innerHTML = html;
+</script>
+</body>
+</html>

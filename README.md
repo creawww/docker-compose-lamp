@@ -1,3 +1,6 @@
+<!--- 
+let text=`
+-->
 # docker-compose-lamp
 
 Docker compose server LAMP: Linux, Apache, Mysql, PHP, and PhpMyadmin (.htaccess enable)
@@ -12,30 +15,27 @@ Entorno de desarrollo de aplicaciones en php y mysql, con persistencia de la bas
 
 Una vez clonado el repositorios tenemos la siguiente estructura de archivos y directorios
 
-```
-docker-compose-lamp
-│   README.md
-│   Docker-compose.yml             # archivo con las instrucciones del docker-compose    
-│
-└───docker
-│   │   Dockerfile56               # Dockerfile de instalacion de apache, php y librerias 
-│   │   php.ini                    # Paramametros personalizados de php ini
-│   │   virtualhost-php56.conf     # Paramametros personalizados virtualhost de apache
-│   └─
-│     
-└───logs                           # Archivos de logs de apache version php 5.6 
-│   │   56_access.log     
-│   │   56_error.log
-│   └─
-│
-└───phpmyadmin
-│   │
-│   └───sessions                   # persistencia para las sesiones de phpmyadmin  
-│ 
-└───www                            # persistencia para la aplicacion web 
-    │   index.php                  # index ejemplo y test con el phpinfo
-    │   
-```
+    docker-compose-lamp
+    - README.md
+    - Docker-compose.yml             # archivo con las instrucciones del docker-compose
+    
+    - db
+        - mysql                      # Carpeta de presistencia de datos Mysql
+    
+    - docker
+        - Dockerfile56               # Dockerfile de instalacion de apache, php y librerias
+        - php.ini                    # Paramametros personalizados de php ini
+        - virtualhost-php56.conf     # Paramametros personalizados virtualhost de apache
+
+    - logs                           # Archivos de logs de apache version php 5.6
+        - 56_access.log
+        - 56_error.log
+
+    - phpmyadmin
+        - sessions                   # persistencia para las sesiones de phpmyadmin  
+
+    - www                            # persistencia para la aplicacion web   
+        - index.php                  # index ejemplo y test con el phpinfo
 
 Todos los archivos y carpetas de las carpeta **www** tiene que pertenecer a usuario **www-data**
 
